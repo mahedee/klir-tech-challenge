@@ -50,5 +50,7 @@ namespace Klir.TechChallenge.Infrastructure.Persistence.Data
             }
         }
 
+        public static List<CartItem> UsersCart = new List<CartItem>();
+
     }
 }

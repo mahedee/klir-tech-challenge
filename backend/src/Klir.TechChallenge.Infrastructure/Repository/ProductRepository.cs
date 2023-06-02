@@ -26,5 +26,10 @@ namespace Klir.TechChallenge.Infrastructure.Repository
             string promotionTitle = FakeContext.Promotions.FirstOrDefault(p => p.Id == promotionId).PromotionTitle;
             return promotionTitle;
         }
+
+        public Product GetProduct(int productId)
+        {
+            return FakeContext.Products.FirstOrDefault(p => p.Id == productId);
+        }
     }
 }
