@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Klir.TechChallenge.Domain.AggregateModel
 {
-    public class CartItem
+    public class CartItem : BaseEntity<int>
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public int ProductId { get; set; }
         public bool IsPromotion { get; set; }
         public decimal UnitPrice { get; set; }

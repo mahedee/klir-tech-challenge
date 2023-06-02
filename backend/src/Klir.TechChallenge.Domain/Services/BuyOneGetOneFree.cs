@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Klir.TechChallenge.Domain.Services
 {
-    // Todo: move to application -> services
+   
     public class BuyOneGetOneFree : IPromotion
     {
         // Price calculation for BuyOneGetOneFree

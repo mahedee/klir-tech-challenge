@@ -18,6 +18,7 @@ namespace Klir.TechChallenge.Infrastructure.Repository
             {
                 var promotionDict = new Dictionary<PromotionType, IPromotion>();
                 promotionDict.Add(PromotionType.ByOneGetOneFree, new BuyOneGetOneFree());
+                promotionDict.Add(PromotionType.ThreeForTenEuro, new ThreeForTenEuro());
                 return promotionDict;
             }
         }
@@ -26,6 +27,8 @@ namespace Klir.TechChallenge.Infrastructure.Repository
         public static IPromotion GetPromotion(PromotionType promotionType)
         {
             IPromotion promotion;
+
+            // Get promotion from dictionary using key PromotionType
             Promotions.TryGetValue(promotionType, out promotion);
 
             if (promotion == null)

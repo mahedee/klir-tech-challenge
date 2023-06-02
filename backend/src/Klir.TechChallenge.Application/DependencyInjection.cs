@@ -1,4 +1,5 @@
 ﻿using Klir.TechChallenge.Application.Services;
+using Klir.TechChallenge.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
