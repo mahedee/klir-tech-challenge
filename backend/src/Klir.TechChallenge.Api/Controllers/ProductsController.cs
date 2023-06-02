@@ -1,6 +1,5 @@
 ﻿using Klir.TechChallenge.Application.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Klir.TechChallenge.Api.Controllers

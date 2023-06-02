@@ -21,10 +21,12 @@ namespace Klir.TechChallenge.Application.Services
         public async Task<CartItem> CalculateTotalPriceAsync(CartItem cartItem)
         {
             CartItem _cartItem = cartItem;
-            _cartItem.TotalPrice = cartItem.UnitPrice * cartItem.Quantity;
+            Product product = _productRepository.GetProduct(_cartItem.ProductId);
+            _cartItem.UnitPrice = product.Price;
+            _cartItem.TotalPrice = _cartItem.UnitPrice * _cartItem.Quantity;
 
             // Get product's promotion details
-            ProductPromotion productPromotion = await _productRepository.GetProductPromotion(cartItem.ProductId);
+            ProductPromotion productPromotion = await _productRepository.GetProductPromotion(_cartItem.ProductId);
 
             // Apply logic here for product promotion
 
@@ -33,7 +35,7 @@ namespace Klir.TechChallenge.Application.Services
             {
                 // Apply Promotion
                 IPromotion promotion = PromotionFactory.GetPromotion((PromotionType)productPromotion.PromotionId);
-                _cartItem = promotion.Apply(cartItem);
+                _cartItem = promotion.Apply(_cartItem);
             }
 
             return _cartItem;
