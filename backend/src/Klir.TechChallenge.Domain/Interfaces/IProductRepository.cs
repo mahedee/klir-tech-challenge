@@ -10,5 +10,7 @@ namespace Klir.TechChallenge.Domain.Interfaces
     public interface IProductRepository
     {
         Task<ProductPromotion> GetProductPromotion(int productId);
+        Task<IEnumerable<Product>> GetAllAsync();
+        string GetPromotionTitle(int promotionId);
     }
 }
