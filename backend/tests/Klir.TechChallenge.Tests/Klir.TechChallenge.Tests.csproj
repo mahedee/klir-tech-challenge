@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Klir.TechChallenge.Application\Klir.TechChallenge.Application.csproj" />
+    <ProjectReference Include="..\..\src\Klir.TechChallenge.Infrastructure\Klir.TechChallenge.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
