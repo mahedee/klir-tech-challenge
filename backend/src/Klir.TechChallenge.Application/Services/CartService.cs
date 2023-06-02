@@ -1,5 +1,6 @@
 ﻿using Klir.TechChallenge.Domain.AggregateModel;
 using Klir.TechChallenge.Domain.Interfaces;
+using Klir.TechChallenge.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,12 @@ namespace Klir.TechChallenge.Application.Services
             // Apply logic here for product promotion
 
 
+            if (productPromotion != null)
+            {
+                // Apply Promotion
+                IPromotion promotion = PromotionFactory.GetPromotion((PromotionType)productPromotion.PromotionId);
+                _cartItem = promotion.Apply(cartItem);
+            }
 
             return _cartItem;
         }

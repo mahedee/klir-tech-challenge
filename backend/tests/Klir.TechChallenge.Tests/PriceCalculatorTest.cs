@@ -15,10 +15,10 @@ public class PriceCalculatorTest
     }
 
     [Fact]
-    public void CartItemWithBuyOneGetOneFree_Quantity1_ShouldReturnWithoutPromotionPrice()
+    public async void CartItemWithBuyOneGetOneFree_Quantity1_ShouldReturnWithoutPromotionPrice()
     {
         var productItem = new CartItem() { Id = 1, ProductId = 1, UnitPrice = 20, Quantity = 1 };
-        var totalPrice = 0;
-        Assert.Equal(20m, totalPrice);
+        var item = await _cartService.CalculateTotalPriceAsync(productItem);
+        Assert.Equal(20m, item.TotalPrice);
     }
 }
