@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
 import './styles/common.css'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import Cart from './components/Cart';
-import { AddItemToCart, EditCartItem} from './services/CartServices';
+import { AddItemToCart, EditCartItem, GetUsersCart} from './services/CartServices';
 
 function App() {
   const [show, setShow] = useState(true); //display cart item or product based on shows value
@@ -21,6 +21,19 @@ function App() {
 
   const [cartItem, setCartItem] = useState(initialCartItem);
 
+
+  useEffect(() => {
+    GetUsersCart()
+      .then((response) => {
+        //console.log("users cart item response", response.data);
+        setCart(response.data);
+      })
+      .catch((error) => {
+        setCart([]);
+        //setData({ usersCart: [], loading: false, error: "error loading data" });
+        console.log("Error: ", error)
+      });
+  }, [])
 
 
   const handleAddToCart = (item) => {

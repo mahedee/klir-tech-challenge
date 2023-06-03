@@ -23,6 +23,7 @@ export const GetUsersCart = () =>{
 
   export const EditCartItem = (id, data) => {
     try {
+      console.log("input data", data);
       const response = axios.put(Base_API_URL + `/Cart/Edit/${id}`, data);
       return response;
     } catch (error) {
