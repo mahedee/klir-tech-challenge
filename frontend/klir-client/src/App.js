@@ -22,6 +22,18 @@ function App() {
   const [cartItem, setCartItem] = useState(initialCartItem);
 
 
+  const loadUsersCart = () =>{
+    GetUsersCart()
+    .then((response) => {
+      //console.log("users cart item response", response.data);
+      setCart(response.data);
+    })
+    .catch((error) => {
+      setCart([]);
+      //setData({ usersCart: [], loading: false, error: "error loading data" });
+      console.log("Error: ", error)
+    });
+  }
   useEffect(() => {
     GetUsersCart()
       .then((response) => {
@@ -37,7 +49,8 @@ function App() {
 
 
   const handleAddToCart = (item) => {
-    //console.log('Cart item', item);
+
+    console.log('handler Cart item', item);
 
     // Check item is already exists or not
     let isPresent = false;
@@ -63,6 +76,8 @@ function App() {
     // insert new item to database
     AddItemToCart(cartItem)
       .then((response) => {
+        console.log("app.js -> Response after add data", response.data);
+        console.log("cart data now", cart);
       }, (error) => {
         throw error;
       })
@@ -72,15 +87,20 @@ function App() {
 
 
     // Add new item with existing item
+    //item.quantity = 1;
     setCart([...cart, item]);
   }
 
 
   // handle quantity change d can be +1 or -1
   const handleQuantityChange = (item, d) => {
+
+    console.log("app.js -> item.quantity", item.quantity);
+    console.log(" app.js -> handleQuantityChange -> cart", cart);
+
     let _index = -1;
 
-    // find the index of the item
+    // find the index of the item from cart
     cart.forEach((data, index) => {
       if (data.id === item.id)
         _index = index;
@@ -94,6 +114,8 @@ function App() {
     const tempCart = cart;
 
     tempCart[_index].quantity += d;
+
+    console.log("app.js -> tempCart->item.quantity", tempCart);
     
     // user cannot decrease to less than 1
     // can either remove
@@ -117,7 +139,6 @@ function App() {
 
     // set cart with new value
     setCart([...tempCart]);
-
   }
 
 
