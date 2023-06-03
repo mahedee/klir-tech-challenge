@@ -46,6 +46,10 @@ export const Cart = ({ cart, setCart, handleQuantityChange }) => {
           dataCount: response.data.count,
           loading: false,
         });
+
+        // set cart
+        setCart(response.data);
+        // calculate grand total
         handlePrice(response.data);
       })
       .catch((error) => {
