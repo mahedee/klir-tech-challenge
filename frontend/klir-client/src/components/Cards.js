@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/cards.css'
 
-export const Cards = ({item}) => {
+export const Cards = ({item, handleAddToCart}) => {
   
   const {name, price, promotionTitle} = item;
   const imgURL = 'ddd.jpg';
@@ -14,7 +14,7 @@ export const Cards = ({item}) => {
             <p>{name}</p>
             <p>{promotionTitle}</p>
             <p>Price - ${price}</p>
-            <button> Add to Cart</button>
+            <button onClick={()=>handleAddToCart(item)}> Add to Cart</button>
         </div>
     </div>
   )

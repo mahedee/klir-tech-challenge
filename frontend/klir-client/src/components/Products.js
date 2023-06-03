@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { GetAllProducts } from '../services/ProductServices';
 import Cards from './Cards';
 
-function Products() {
+function Products({handleAddToCart}) {
 
     const [data, setData] = useState({productList: [], dataCount: 0, loading: true, error: ""});
 
@@ -34,7 +34,7 @@ function Products() {
     {
   
         data.productList.map((item) => (             
-            <Cards key={item.id} item={item} />
+            <Cards key={item.id} item={item} handleAddToCart={handleAddToCart} />
         ))
 
     
