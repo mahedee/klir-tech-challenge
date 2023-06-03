@@ -34,17 +34,20 @@ function App() {
       console.log("Error: ", error)
     });
   }
+
   useEffect(() => {
-    GetUsersCart()
-      .then((response) => {
-        //console.log("users cart item response", response.data);
-        setCart(response.data);
-      })
-      .catch((error) => {
-        setCart([]);
-        //setData({ usersCart: [], loading: false, error: "error loading data" });
-        console.log("Error: ", error)
-      });
+    // GetUsersCart()
+    //   .then((response) => {
+    //     //console.log("users cart item response", response.data);
+    //     setCart(response.data);
+    //   })
+    //   .catch((error) => {
+    //     setCart([]);
+    //     //setData({ usersCart: [], loading: false, error: "error loading data" });
+    //     console.log("Error: ", error)
+    //   });
+
+    loadUsersCart();
   }, [])
 
 
@@ -87,7 +90,7 @@ function App() {
 
 
     // Add new item with existing item
-    //item.quantity = 1;
+    item.quantity = 1;
     setCart([...cart, item]);
   }
 
@@ -122,6 +125,8 @@ function App() {
 
     if (tempCart[_index].quantity === 0)
       tempCart[_index].quantity = 1;
+
+    console.log("app.js -> tempCart->item.quantity->index", tempCart[_index]);
   
     EditCartItem(item.id, tempCart[_index])
       .then((response) => {

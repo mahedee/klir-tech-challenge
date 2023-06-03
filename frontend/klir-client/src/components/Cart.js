@@ -55,13 +55,14 @@ export const Cart = ({ cart, setCart, handleQuantityChange }) => {
   };
 
   useEffect(() => {
+    console.log("Cart->useEffect");
     loadUsersCart();
     // let isMounted = true;
     // if (isMounted) {
     //   loadUsersCart();
     //   isMounted = false;
     // }
-  });
+  },[]);
   // }, [cart]);
 
   return (
