@@ -1,7 +1,6 @@
 ﻿using Klir.TechChallenge.Application.Commands;
 using Klir.TechChallenge.Application.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Klir.TechChallenge.Api.Controllers
@@ -18,7 +17,6 @@ namespace Klir.TechChallenge.Api.Controllers
         }
 
         [HttpGet("GetUsersCart")]
-        //[ProducesDefaultResponseType(typeof(IEnumerable<ProductResponseDTO>))]
         public async Task<IActionResult> GetAllAsync([FromQuery] GetUsersCartQuery query)
         {
             return Ok(await _mediator.Send(query));
@@ -28,6 +26,20 @@ namespace Klir.TechChallenge.Api.Controllers
         public async Task<IActionResult> AddItemToCartAsync([FromBody] CartItemAddCommand command)
         {
             return Ok(await _mediator.Send(command));
+        }
+
+        // PUT api/<CartController>/5
+        [HttpPut("Edit/{id}")]
+        public async Task<IActionResult> Put(CartItemUpdateCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        // DELETE api/<CartController>/5
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(await _mediator.Send(new CartItemDeleteCommand(id)));
         }
     }
 }

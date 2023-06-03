@@ -1,11 +1,6 @@
 ﻿using Klir.TechChallenge.Domain.AggregateModel;
 using Klir.TechChallenge.Domain.Interfaces;
 using Klir.TechChallenge.Infrastructure.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Klir.TechChallenge.Application.Services
 {
@@ -27,9 +22,6 @@ namespace Klir.TechChallenge.Application.Services
 
             // Get product's promotion details
             ProductPromotion productPromotion = await _productRepository.GetProductPromotion(_cartItem.ProductId);
-
-            // Apply logic here for product promotion
-
 
             if (productPromotion != null)
             {
